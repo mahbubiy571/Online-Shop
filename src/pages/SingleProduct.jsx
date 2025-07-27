@@ -1,0 +1,122 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+
+function SingleProduct() {
+  const { id } = useParams();
+  const [product, setProduct] = useState(null);
+
+  useEffect(() => {
+    axios("https://dummyjson.com/products/" + id)
+      .then(({ data }) => setProduct(data))
+      .catch((error) => console.log(error.message));
+  }, [id]);
+
+  return (
+    <>
+      {product && (
+        <div className="card bg-base-100 sm:w-85 md:w-4/5 shadow-lg mx-auto my-8 p-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-6">
+          🛒 Product Info
+          </h2>
+           <div className="flex flex-col md:flex-row gap-6 items-start">
+            <figure className="w-full md:w-1/2 flex justify-center">
+              <img
+                className="rounded-md shadow-md hover:shadow-2xl"
+                src={product.thumbnail}
+                alt={product.title}
+                style={{ width: "300px" }}
+              />
+            </figure>
+
+            <ul className="card-body w-full md:w-1/2">
+              <h2 className="card-title text-center sm:text-left md:text-2xl font-bold text-gray-800 mb-2">
+                {product.title}
+              </h2>
+              <li className="text-gray-700 mb-4 text-center sm:text-left">{product.description}</li>
+              <div className="flex justify-between items-center md:text-[18px] sm:text-[14px] text-[15px] mb-4">
+                <div className="flex gap-2">
+                  <span className="line-through text-gray-500">
+                    ${product.price + 1}
+                  </span>
+                  <span className="text-green-600 font-bold">
+                    ${product.price}
+                  </span>
+                </div>
+              </div>
+              <h2 className="text-gray-500 md:text-[18px]">
+                ⭐{product.rating} ({product.stock + 20} sold)
+              </h2>
+              <button className="btn btn-primary w-26 h-9 md:w-40 md:ml-auto md:mr-0 ml-auto mr-auto rounded-md hover:bg-blue-500 hover:border-b-blue-500">
+                Buy Now
+              </button>
+              <details>
+                <summary className="md:text-lg font-semibold cursor-pointer mb-2 mt-5">
+                  📝 Product Information
+                </summary>
+                <div className="pl-4 mt-2 space-y-4">
+                  <details>
+                    <summary className="font-medium text-gray-700 cursor-pointer">
+                      📦 Product Details
+                    </summary>
+                    <ul className="mt-1 pl-4 text-sm text-gray-600 space-y-1">
+                      <li>
+                        <strong>Category:</strong> {product.tags}
+                      </li>
+                      <li>
+                        <strong>Brand:</strong> {product.brand}
+                      </li>
+                      <li>
+                        <strong>Stock:</strong> {product.stock} items available
+                      </li>
+                      <li>
+                        <strong>SKU:</strong> {product.sku}
+                      </li>
+                      <li>
+                        <strong>Weight:</strong> {product.weight}g
+                      </li>
+                    </ul>
+                  </details>
+                  <details>
+                    <summary className="font-medium text-gray-700 cursor-pointer">
+                      📏 Dimensions (cm)
+                    </summary>
+                    <ul className="mt-1 pl-4 text-sm text-gray-600 space-y-1">
+                      <li>
+                        <strong>Width:</strong> 15.14
+                      </li>
+                      <li>
+                        <strong>Height:</strong> 13.08
+                      </li>
+                      <li>
+                        <strong>Depth:</strong> 22.99
+                      </li>
+                    </ul>
+                  </details>
+                  <details>
+                    <summary className="font-medium text-gray-700 cursor-pointer">
+                      🚚 Warranty & Shipping
+                    </summary>
+                    <ul className="mt-1 pl-4 text-sm text-gray-600 space-y-1">
+                      <li>
+                        <strong>Warranty:</strong> {product.warrantyInformation}
+                      </li>
+                      <li>
+                        <strong>Shipping:</strong> {product.shippingInformation}
+                      </li>
+                      <li>
+                        <strong>Availability:</strong> In Stock
+                      </li>
+                    </ul>
+                  </details>
+                </div>
+              </details>
+            </ul>
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
+
+export default SingleProduct;
