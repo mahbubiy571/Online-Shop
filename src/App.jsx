@@ -1,6 +1,9 @@
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import { ProtectedRoutes } from "./components/ProtectedRoutes";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainLayout from "./Layouts/MainLayout";
 import SingleProduct from "./pages/SingleProduct";
@@ -10,10 +13,15 @@ import Wishlist from "./pages/Wishlist";
 import Shop from "./pages/Shop";
 
 function App() {
+  let user = true;
   const routes = createBrowserRouter([
     {
       path: "/",
-      element: <MainLayout />,
+      element: (
+        <ProtectedRoutes user={user}>
+          <MainLayout />
+        </ProtectedRoutes>
+      ),
       children: [
         {
           index: true,
@@ -29,25 +37,33 @@ function App() {
         },
         {
           path: "profile",
-          element: <Profile/>
+          element: <Profile />,
         },
         {
           path: "cart",
-          element: <Cart/>
+          element: <Cart />,
         },
         {
           path: "wishlist",
-          element: <Wishlist/>
+          element: <Wishlist />,
         },
         {
           path: "shop",
-          element: <Shop/>
+          element: <Shop />,
         },
         {
           path: "singleProduct/:id",
           element: <SingleProduct />,
-        }
+        },
       ],
+    },
+    {
+      path: "/login",
+      element: <Login />,
+    },
+    {
+      path: "/register",
+      element: <Register />,
     },
   ]);
 
