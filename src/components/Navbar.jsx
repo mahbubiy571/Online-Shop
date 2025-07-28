@@ -29,7 +29,7 @@ function Navbar() {
         </div>
 
         <div className="navbar-end flex items-center gap-2">
-      
+
           <div className="hidden md:flex items-center gap-5">
           <NavLink className="flex items-center gap-1.5 hover:text-amber-600 transition-normal" to="/cart" onClick={() => setIsMenuOpen(false)}>
             <ShoppingCart className="w-6 h-6"/>
@@ -54,7 +54,7 @@ function Navbar() {
       </div>
 
       <div
-        className={`fixed top-0 right-0 h-full w-[70%] bg-base-100 shadow-lg z-50 p-4 transform transition-transform duration-300 ${
+        className={`fixed top-0 right-0 h-full w-[70%] bg-base-100 shadow-lg z-50 p-4 transform transition-transform duration-250 ${
           isMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
@@ -84,9 +84,6 @@ function Navbar() {
            </NavLink>
           </li>
         </ul>
-
-        
-
       </div>
     </header>
   );
