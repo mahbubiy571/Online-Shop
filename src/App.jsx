@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { ProtectedRoutes } from "./components/ProtectedRoutes";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
 import MainLayout from "./Layouts/MainLayout";
 import SingleProduct from "./pages/SingleProduct";
 import Profile from "./pages/Profile";
@@ -13,7 +13,7 @@ import Wishlist from "./pages/Wishlist";
 import Shop from "./pages/Shop";
 
 function App() {
-  let user = false;
+  let user = true;
   const routes = createBrowserRouter([
     {
       path: "/",
@@ -59,11 +59,11 @@ function App() {
     },
     {
       path: "/login",
-      element: <Login />,
+      element: user ? <Navigate to="/" /> : <Login />,
     },
     {
       path: "/register",
-      element: <Register />,
+      element: user ? <Navigate to="/" /> : <Register />,
     },
   ]);
 
