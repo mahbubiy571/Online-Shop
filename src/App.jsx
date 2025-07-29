@@ -13,7 +13,7 @@ import Wishlist from "./pages/Wishlist";
 import Shop from "./pages/Shop";
 
 function App() {
-  let user = true;
+  let user = false;
   const routes = createBrowserRouter([
     {
       path: "/",
