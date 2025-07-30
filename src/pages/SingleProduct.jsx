@@ -1,25 +1,41 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { useFetch } from "../hooks/useFetch";
 
 function SingleProduct() {
   const { id } = useParams();
-  const [product, setProduct] = useState(null);
+  const {
+    data: product,
+    isPending,
+    error,
+  } = useFetch("https://dummyjson.com/products/" + id);
 
-  useEffect(() => {
-    axios("https://dummyjson.com/products/" + id)
-      .then(({ data }) => setProduct(data))
-      .catch((error) => console.log(error.message));
-  }, [id]);
+  if (isPending) {
+    return (
+      <>
+        <div className="flex flex-col items-center justify-center min-h-screen">
+          <div className="w-7.5 h-7.5 border-4 border-blue-500 border-dashed rounded-full animate-spin"></div>
+          <h1 className="text-xl mt-4 text-gray-600">⏳ Loading...</h1>
+        </div>
+      </>
+    );
+  }
+
+  if (error) {
+    return (
+      <>
+        <h1 className="text-4xl">{error}</h1>
+      </>
+    );
+  }
 
   return (
     <>
       {product && (
         <div className="card bg-base-100 sm:w-85 md:w-4/5 shadow-lg mx-auto my-8 p-4">
           <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-6">
-          🛒 Product Info
+            🛒 Product Info
           </h2>
-           <div className="flex flex-col md:flex-row gap-6 items-start">
+          <div className="flex flex-col md:flex-row gap-6 items-start">
             <figure className="w-full md:w-1/2 flex justify-center">
               <img
                 className="rounded-md shadow-md hover:shadow-2xl"
@@ -33,7 +49,9 @@ function SingleProduct() {
               <h2 className="card-title text-center sm:text-left md:text-2xl font-bold text-gray-800 mb-2">
                 {product.title}
               </h2>
-              <li className="text-gray-700 mb-4 text-center sm:text-left">{product.description}</li>
+              <li className="text-gray-700 mb-4 text-center sm:text-left">
+                {product.description}
+              </li>
               <div className="flex justify-between items-center md:text-[18px] sm:text-[14px] text-[15px] mb-4">
                 <div className="flex gap-2">
                   <span className="line-through text-gray-500">
