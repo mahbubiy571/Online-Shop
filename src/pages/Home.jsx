@@ -6,7 +6,7 @@ function Home() {
     data: products,
     isPending,
     error,
-  } = useFetch("https://dummyjson.com/product");
+  } = useFetch("https://dummyjson.com/products?skip=93&limit=20");
 
   if (isPending) {
     return (
