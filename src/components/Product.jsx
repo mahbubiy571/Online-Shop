@@ -1,5 +1,22 @@
 import { Link } from "react-router-dom";
+import { useGlobalContext } from "../hooks/useGlobalContext";
+
 function Product({ prod }) {
+  const { dispatch, products } = useGlobalContext();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    const item = products.find((product) => product.id == prod.id);
+
+    if (item) {
+      dispatch({ type: "INCREASE_AMOUNT", payload: prod.id });
+    } else {
+      dispatch({ type: "ADD_PRODUCT", payload: { ...prod, amount: 1 } });
+    }
+  };
+
   return (
     <Link to={`/singleProduct/${prod.id}`}>
       <div className="shadow-sm grid w-60">
@@ -20,10 +37,13 @@ function Product({ prod }) {
             <span className="text-green-600 font-400">${prod.price}</span>
           </div>
           <h2 className="text-gray-500">
-              ⭐{prod.rating} ({prod.stock+20} sold)
-            </h2>
+            ⭐{prod.rating} ({prod.stock + 20} sold)
+          </h2>
           <button className="btn btn-primary  ml-auto mr-auto w-full h-8 rounded-lg transition-normal hover:bg-blue-700 hover:border-b-blue-700">
             Buy Now
+          </button>
+          <button className="btn btn-block" onClick={handleSubmit}>
+            Add To Cart
           </button>
         </ul>
       </div>

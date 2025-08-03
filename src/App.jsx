@@ -4,16 +4,21 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { ProtectedRoutes } from "./components/ProtectedRoutes";
-import { createBrowserRouter, Navigate, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 import MainLayout from "./Layouts/MainLayout";
 import SingleProduct from "./pages/SingleProduct";
 import Profile from "./pages/Profile";
 import Cart from "./pages/Cart";
 import Wishlist from "./pages/Wishlist";
 import Shop from "./pages/Shop";
+import { useGlobalContext } from "./hooks/useGlobalContext";
 
 function App() {
-  let user = true;
+  const { user } = useGlobalContext();
   const routes = createBrowserRouter([
     {
       path: "/",
