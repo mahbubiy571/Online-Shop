@@ -60,7 +60,7 @@ function Navbar() {
               onClick={() => setIsMenuOpen(false)}
             >
               <div className="indicator">
-                <span className="indicator-item badge badge- bg-green-400">
+                <span className="indicator-item badge badge- bg-green-400 opacity-85 text-[16px] h-7 w-9">
                   {totalAmount}
                 </span>
                 <ShoppingCart className="w-7 h-7" />
@@ -107,7 +107,7 @@ function Navbar() {
             onClick={() => setIsMenuOpen(false)}
           >
             <div className="indicator">
-              <span className="indicator-item badge badge- bg-green-400">
+              <span className="indicator-item badge badge- bg-green-400 opacity-85 text-[16px] h-7 w-9">
                 {totalAmount}
               </span>
               <ShoppingCart className="w-7 h-7" />
