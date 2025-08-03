@@ -1,6 +1,6 @@
 import { useReducer, createContext, useEffect } from "react";
 
-export const GlobalContext = createContext();
+export const GlobalContext = createContext(null);
 
 const changeState = (state, action) => {
   const { payload, type } = action;
@@ -61,7 +61,14 @@ export function GlobalContextProvider({ children }) {
   }, [state.products]);
 
   return (
-    <GlobalContext.Provider value={{ ...state, dispatch }}>
+    <GlobalContext.Provider
+      value={{
+        ...state,
+        dispatch,
+        totalAmount: state.totalAmount,
+        totalPrice: state.totalPrice,
+      }}
+    >
       {children}
     </GlobalContext.Provider>
   );
