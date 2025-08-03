@@ -1,21 +1,9 @@
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../hooks/useGlobalContext";
+import { handleCartSubmit } from "../utils/handleCartSubmit";
 
 function Product({ prod }) {
   const { dispatch, products } = useGlobalContext();
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    const item = products.find((product) => product.id == prod.id);
-
-    if (item) {
-      dispatch({ type: "INCREASE_AMOUNT", payload: prod.id });
-    } else {
-      dispatch({ type: "ADD_PRODUCT", payload: { ...prod, amount: 1 } });
-    }
-  };
 
   return (
     <Link to={`/singleProduct/${prod.id}`}>
@@ -40,7 +28,7 @@ function Product({ prod }) {
             ⭐{prod.rating} ({prod.stock + 20} sold)
           </h2>
           <button
-            onClick={handleSubmit}
+            onClick={(e) => handleCartSubmit(e, prod, products, dispatch)}
             className="btn btn-primary  ml-auto mr-auto w-full h-8 rounded-lg transition-normal hover:bg-blue-700 hover:border-b-blue-700"
           >
             Buy Now

@@ -1,8 +1,11 @@
 import { useParams } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
+import { handleCartSubmit } from "../utils/handleCartSubmit";
+import { useGlobalContext } from "../hooks/useGlobalContext";
 
 function SingleProduct() {
   const { id } = useParams();
+  const { products, dispatch } = useGlobalContext();
   const {
     data: product,
     isPending,
@@ -72,7 +75,12 @@ function SingleProduct() {
               <h2 className="text-gray-500 md:text-[18px]">
                 ⭐{product.rating} ({product.stock + 20} sold)
               </h2>
-              <button className="btn btn-primary w-26 h-9 md:w-40 md:ml-auto md:mr-0 ml-auto mr-auto rounded-md hover:bg-blue-500 hover:border-b-blue-500">
+              <button
+                onClick={(e) =>
+                  handleCartSubmit(e, product, products, dispatch)
+                }
+                className="btn btn-primary w-26 h-9 md:w-40 md:ml-auto md:mr-0 ml-auto mr-auto rounded-md hover:bg-blue-500 hover:border-b-blue-500"
+              >
                 Buy Now
               </button>
               <details>
