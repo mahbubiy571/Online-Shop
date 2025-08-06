@@ -35,6 +35,20 @@ const changeState = (state, action) => {
         totalAmount: payload.amount,
         totalPrice: payload.price,
       };
+    case "DELETE_ITEM":
+      return {
+        ...state,
+        products: state.products.filter((p) => {
+          return p.id !== payload;
+        }),
+      };
+    case "CLEAR":
+      return {
+        ...state,
+        products: [],
+        totalAmount: 0,
+        totalPrice: 0,
+      };
     default:
       return state;
   }
