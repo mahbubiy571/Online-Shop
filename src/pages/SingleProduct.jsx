@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useFetch } from "../hooks/useFetch";
 import { handleCartSubmit } from "../utils/handleCartSubmit";
 import { useGlobalContext } from "../hooks/useGlobalContext";
+import { formatPrice } from "../utils";
 
 function SingleProduct() {
   const { id } = useParams();
@@ -63,12 +64,12 @@ function SingleProduct() {
                 {product.description}
               </li>
               <div className="flex justify-between items-center md:text-[18px] sm:text-[14px] text-[15px] mb-4">
-                <div className="flex gap-2">
+                <div className="flex gap-3">
                   <span className="line-through text-gray-500">
-                    ${product.price + 1}
+                    {formatPrice(product.price + 1)}
                   </span>
                   <span className="text-green-600 font-bold">
-                    ${product.price}
+                    {formatPrice(product.price)}
                   </span>
                 </div>
               </div>
