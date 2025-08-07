@@ -8,7 +8,7 @@ import { useTheme } from "../hooks/useTheme";
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { totalAmount, totalPrice } = useContext(GlobalContext);
-  const { changeTheme } = useTheme();
+  const { changeTheme, theme } = useTheme();
 
   return (
     <header className="bg-base-200 relative z-50">
@@ -76,7 +76,11 @@ function Navbar() {
               <User className="w-7 h-7" />
             </NavLink>
             <label className="swap swap-rotate hover:text-amber-600 transition-normal">
-              <input type="checkbox" onChange={changeTheme} />
+              <input
+                type="checkbox"
+                onChange={changeTheme}
+                defaultChecked={theme == "dark"}
+              />
               <svg
                 className="swap-on h-8 w-8 fill-current"
                 xmlns="http://www.w3.org/2000/svg"
@@ -141,7 +145,11 @@ function Navbar() {
             <User className="w-7 h-7" />
           </NavLink>
           <label className="swap swap-rotate hover:text-amber-600 transition-normal">
-            <input type="checkbox" onChange={changeTheme} />
+            <input
+              type="checkbox"
+              onChange={changeTheme}
+              defaultChecked={theme == "dark"}
+            />
             <svg
               className="swap-on h-8 w-8 fill-current"
               xmlns="http://www.w3.org/2000/svg"

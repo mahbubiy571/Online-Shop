@@ -8,7 +8,7 @@ function Product({ prod }) {
 
   return (
     <Link to={`/singleProduct/${prod.id}`}>
-      <div className="shadow-sm grid w-60">
+      <div className="shadow-lg grid w-60">
         <figure>
           <img
             className="max-w-60 bg-cover ml-auto mr-auto"
