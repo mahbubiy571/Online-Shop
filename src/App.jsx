@@ -1,20 +1,23 @@
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import { ProtectedRoutes } from "./components/ProtectedRoutes";
+import {
+  About,
+  Cart,
+  CartItem,
+  Contact,
+  Home,
+  Login,
+  Profile,
+  Register,
+  Shop,
+  SingleProduct,
+  Wishlist,
+} from "./pages";
 import {
   createBrowserRouter,
   Navigate,
   RouterProvider,
 } from "react-router-dom";
 import MainLayout from "./Layouts/MainLayout";
-import SingleProduct from "./pages/SingleProduct";
-import Profile from "./pages/Profile";
-import Cart from "./pages/Cart";
-import Wishlist from "./pages/Wishlist";
-import Shop from "./pages/Shop";
+import { ProtectedRoutes } from "./components/ProtectedRoutes";
 import { useGlobalContext } from "./hooks/useGlobalContext";
 
 function App() {

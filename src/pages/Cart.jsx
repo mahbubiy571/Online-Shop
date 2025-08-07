@@ -18,9 +18,19 @@ function Cart() {
   }
   return (
     <div>
-      <div className=" items-center justify-between flex m-10">
-        <h2 className="text-3xl font-semibold">Cart List:</h2>
-        <div className="flex gap-4 text-2xl font-semibold items-center">
+      <div className=" items-center justify-between md:flex md:m-6 m-2">
+        <div className="flex items-center justify-between">
+          <h2 className="md:text-3xl text-2xl font-semibold">Cart List:</h2>
+          <button
+            onClick={() => {
+              dispatch({ type: "CLEAR" });
+            }}
+            className="btn btn-outline btn-secondary rounded-lg md:text-[18px] text-[16px] h-6 px-2.5 md:hidden"
+          >
+            Clear
+          </button>
+        </div>
+        <div className="md:flex md:gap-4 md:text-2xl text-[18px] font-semibold items-center text-center">
           <h3 className="text-amber-800">
             Total Price:{" "}
             <span className="text-amber-500">{formatPrice(totalPrice)}</span>
@@ -29,7 +39,7 @@ function Cart() {
             onClick={() => {
               dispatch({ type: "CLEAR" });
             }}
-            className="btn btn-secondary rounded-lg text-2xl"
+            className="btn btn-outline btn-secondary rounded-lg md:text-[18px] text-[16px] h-7 hidden md:block"
           >
             Clear
           </button>

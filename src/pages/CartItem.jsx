@@ -37,7 +37,7 @@ function CartItem({ product }) {
             className="rounded-lg"
           />
           <div className="flex-1 text-center lg:text-left">
-            <h2 className="card-title text-2xl">{product.title}</h2>
+            <h2 className="card-title md:text-2xl">{product.title}</h2>
             <p className="text-sm text-gray-500 mt-2">
               Price: {formatPrice(product.price)}
             </p>
@@ -51,16 +51,16 @@ function CartItem({ product }) {
 
           <div className="card-actions">
             <button
-              className="btn btn-ghost hover:bg-amber-400 transition-normal rounded-md border border-amber-400 text-2xl"
+              className="btn btn-ghost hover:bg-amber-400 transition-normal rounded-md border border-amber-400 md:text-2xl"
               onClick={increment}
             >
               &#43;
             </button>
-            <span className="mt-1 font-bold text-black text-2xl">
+            <span className="mt-1 font-bold text-black md:text-2xl text-[18px]">
               {product.amount}
             </span>
             <button
-              className="btn btn-ghost hover:bg-amber-400 transition-normal rounded-md border border-amber-400 text-2xl"
+              className="btn btn-ghost hover:bg-amber-400 transition-normal rounded-md border border-amber-400 md:text-2xl"
               onClick={decrement}
             >
               &#8722;
