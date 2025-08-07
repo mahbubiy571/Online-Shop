@@ -47,6 +47,8 @@ const changeState = (state, action) => {
         totalPrice: payload.price,
       };
     case "DELETE_ITEM":
+      if (!confirm("Rostan ham ushbu mahsulotni o'chirmoqchimsiz?"))
+        return state;
       return {
         ...state,
         products: state.products.filter((p) => {
@@ -54,6 +56,7 @@ const changeState = (state, action) => {
         }),
       };
     case "CLEAR":
+      if (!confirm("Rostdan ham savatchani tozalamoqchimisiz?")) return state;
       return {
         ...state,
         products: [],
