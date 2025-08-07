@@ -1,6 +1,17 @@
 import { useReducer, createContext, useEffect } from "react";
 
-export const GlobalContext = createContext(null);
+export const GlobalContext = createContext();
+
+const globalStateFromLocal = () => {
+  return localStorage.getItem("globalState")
+    ? JSON.parse(localStorage.getItem("globalState"))
+    : {
+        user: true,
+        products: [],
+        totalAmount: 0,
+        totalPrice: 0,
+      };
+};
 
 const changeState = (state, action) => {
   const { payload, type } = action;
@@ -55,12 +66,7 @@ const changeState = (state, action) => {
 };
 
 export function GlobalContextProvider({ children }) {
-  const [state, dispatch] = useReducer(changeState, {
-    user: true,
-    products: [],
-    totalAmount: 0,
-    totalPrice: 0,
-  });
+  const [state, dispatch] = useReducer(changeState, globalStateFromLocal());
 
   useEffect(() => {
     let price = 0;
@@ -73,6 +79,10 @@ export function GlobalContextProvider({ children }) {
 
     dispatch({ type: "CHANGE_AMOUNT_PRICE", payload: { price, amount } });
   }, [state.products]);
+
+  useEffect(() => {
+    localStorage.setItem("globalState", JSON.stringify(state));
+  }, [state]);
 
   return (
     <GlobalContext.Provider
