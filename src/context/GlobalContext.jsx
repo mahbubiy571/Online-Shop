@@ -1,4 +1,5 @@
 import { useReducer, createContext, useEffect } from "react";
+import { toast } from "react-toastify";
 
 export const GlobalContext = createContext();
 
@@ -18,11 +19,13 @@ const changeState = (state, action) => {
 
   switch (type) {
     case "ADD_PRODUCT":
+      toast.success("🛒 Mahsulot savatchaga qo‘shildi");
       return {
         ...state,
         products: [...state.products, { ...payload, amount: 1 }],
       };
     case "INCREASE_AMOUNT":
+      toast.success("✅ Mahsulot miqdori oshirildi");
       return {
         ...state,
         products: state.products.map((product) =>
@@ -32,6 +35,7 @@ const changeState = (state, action) => {
         ),
       };
     case "DECREASE_AMOUNT":
+      toast.warning("⚠️ Mahsulot miqdori kamaytirildi");
       return {
         ...state,
         products: state.products.map((product) =>
@@ -47,16 +51,20 @@ const changeState = (state, action) => {
         totalPrice: payload.price,
       };
     case "DELETE_ITEM":
-      if (!confirm("Rostan ham ushbu mahsulotni o'chirmoqchimsiz?"))
+      if (!confirm("Rostan ham ushbu mahsulotni o'chirmoqchimisiz?")) {
+        toast.warning("❌ Mahsulot o‘chirish bekor qilindi");
         return state;
+      }
+
+      toast.error("🗑️ Mahsulot o‘chirildi");
+
       return {
         ...state,
-        products: state.products.filter((p) => {
-          return p.id !== payload;
-        }),
+        products: state.products.filter((p) => p.id !== payload),
       };
     case "CLEAR":
       if (!confirm("Rostdan ham savatchani tozalamoqchimisiz?")) return state;
+      toast.info("🧹 Savatcha tozalandi");
       return {
         ...state,
         products: [],
