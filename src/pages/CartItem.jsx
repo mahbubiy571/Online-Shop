@@ -38,9 +38,7 @@ function CartItem({ product }) {
           />
           <div className="flex-1 text-center lg:text-left">
             <h2 className="card-title md:text-2xl">{product.title}</h2>
-            <p className="text-sm text-gray-500 mt-2">
-              Price: {formatPrice(product.price)}
-            </p>
+            <p className="text-sm mt-2">Price: {formatPrice(product.price)}</p>
             <p className="text-sm text-amber-800 mt-2">
               Total Price:{" "}
               <span className="text-sm text-amber-500 mt-2">
@@ -56,7 +54,7 @@ function CartItem({ product }) {
             >
               &#43;
             </button>
-            <span className="mt-1 font-bold text-black md:text-2xl text-[18px]">
+            <span className="mt-1 font-bold md:text-2xl text-[18px]">
               {product.amount}
             </span>
             <button

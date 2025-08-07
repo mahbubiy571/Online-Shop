@@ -18,16 +18,14 @@ function Product({ prod }) {
         </figure>
         <ul className="card-body shadow hover:shadow-2xl">
           <li className="card-title line-clamp-1">{prod.title}</li>
-          <li className="text-neutral-600 line-clamp-2">{prod.description}</li>
+          <li className="line-clamp-2">{prod.description}</li>
           <div className="flex gap-3 text-[18px]">
-            <span className="line-through text-gray-500">
-              {formatPrice(prod.price + 1)}
-            </span>
+            <span className="line-through">{formatPrice(prod.price + 1)}</span>
             <span className="text-green-600 font-400">
               {formatPrice(prod.price)}
             </span>
           </div>
-          <h2 className="text-gray-500">
+          <h2>
             ⭐{prod.rating} ({prod.stock + 20} sold)
           </h2>
           <button

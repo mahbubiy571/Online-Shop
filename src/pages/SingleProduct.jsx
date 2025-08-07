@@ -43,7 +43,7 @@ function SingleProduct() {
     <>
       {product && (
         <div className="card bg-base-100 sm:w-85 md:w-4/5 shadow-lg mx-auto my-8 p-4">
-          <h2 className="text-2xl md:text-3xl font-bold text-center text-gray-800 mb-6">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-6">
             🛒 Product Info
           </h2>
           <div className="flex flex-col md:flex-row gap-6 items-start">
@@ -57,15 +57,15 @@ function SingleProduct() {
             </figure>
 
             <ul className="card-body w-full md:w-1/2">
-              <h2 className="card-title text-center sm:text-left md:text-2xl font-bold text-gray-800 mb-2">
+              <h2 className="card-title text-center sm:text-left md:text-2xl font-bold mb-2">
                 {product.title}
               </h2>
-              <li className="text-gray-700 mb-4 text-center sm:text-left">
+              <li className="mb-4 text-center sm:text-left">
                 {product.description}
               </li>
               <div className="flex justify-between items-center md:text-[18px] sm:text-[14px] text-[15px] mb-4">
                 <div className="flex gap-3">
-                  <span className="line-through text-gray-500">
+                  <span className="line-through">
                     {formatPrice(product.price + 1)}
                   </span>
                   <span className="text-green-600 font-bold">
@@ -73,7 +73,7 @@ function SingleProduct() {
                   </span>
                 </div>
               </div>
-              <h2 className="text-gray-500 md:text-[18px]">
+              <h2 className="md:text-[18px]">
                 ⭐{product.rating} ({product.stock + 20} sold)
               </h2>
               <button
@@ -90,10 +90,10 @@ function SingleProduct() {
                 </summary>
                 <div className="pl-4 mt-2 space-y-4">
                   <details>
-                    <summary className="font-medium text-gray-700 cursor-pointer">
+                    <summary className="font-medium cursor-pointer">
                       📦 Product Details
                     </summary>
-                    <ul className="mt-1 pl-4 text-sm text-gray-600 space-y-1">
+                    <ul className="mt-1 pl-4 text-sm space-y-1">
                       <li>
                         <strong>Category:</strong> {product.tags}
                       </li>
@@ -112,10 +112,10 @@ function SingleProduct() {
                     </ul>
                   </details>
                   <details>
-                    <summary className="font-medium text-gray-700 cursor-pointer">
+                    <summary className="font-medium cursor-pointer">
                       📏 Dimensions (cm)
                     </summary>
-                    <ul className="mt-1 pl-4 text-sm text-gray-600 space-y-1">
+                    <ul className="mt-1 pl-4 text-sm space-y-1">
                       <li>
                         <strong>Width:</strong> 15.14
                       </li>
@@ -128,10 +128,10 @@ function SingleProduct() {
                     </ul>
                   </details>
                   <details>
-                    <summary className="font-medium text-gray-700 cursor-pointer">
+                    <summary className="font-medium cursor-pointer">
                       🚚 Warranty & Shipping
                     </summary>
-                    <ul className="mt-1 pl-4 text-sm text-gray-600 space-y-1">
+                    <ul className="mt-1 pl-4 text-sm space-y-1">
                       <li>
                         <strong>Warranty:</strong> {product.warrantyInformation}
                       </li>
