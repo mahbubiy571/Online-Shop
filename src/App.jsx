@@ -24,6 +24,7 @@ import clsx from "clsx";
 
 function App() {
   const { user } = useGlobalContext();
+  console.log("user:", user);
   const routes = createBrowserRouter([
     {
       path: "/",
@@ -69,11 +70,11 @@ function App() {
     },
     {
       path: "/login",
-      element: user ? <Navigate to="/" /> : <Login />,
+      element: user ? <Navigate to="/" replace /> : <Login />,
     },
     {
       path: "/register",
-      element: user ? <Navigate to="/" /> : <Register />,
+      element: user ? <Navigate to="/" replace /> : <Register />,
     },
   ]);
 

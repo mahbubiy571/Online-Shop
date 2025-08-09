@@ -7,7 +7,7 @@ const globalStateFromLocal = () => {
   return localStorage.getItem("globalState")
     ? JSON.parse(localStorage.getItem("globalState"))
     : {
-        user: true,
+        user: false,
         likedProducts: [],
         products: [],
         totalAmount: 0,
