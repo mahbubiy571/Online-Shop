@@ -3,11 +3,10 @@ import AuthTabs from "../components/AuthTabs";
 
 const Login = () => {
   return (
-    <div className="flex justify-center items-center min-h-screen bg-base-200">
-      <div className="card w-[360px] bg-white shadow-md rounded-xl p-5">
+    <div className="flex justify-center items-center h-screen bg-base-200">
+      <div className="card max-w-96 bg-white shadow-lg rounded-xl p-5">
         <AuthTabs />
-
-        <form className="space-y-4">
+        <form className="space-y-3">
           <FormInput
             name="email"
             type="email"
@@ -20,7 +19,7 @@ const Login = () => {
             placeholder="••••••••"
             label="Password"
           />
-          <div className="pt-2">
+          <div className="pt-1">
             <button className="btn btn-primary w-[320px] h-9 text-[16px] rounded-md">
               Sign In
             </button>

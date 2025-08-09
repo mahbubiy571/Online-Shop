@@ -4,9 +4,9 @@ import FormInput from "../components/FormInput";
 const Register = () => {
   return (
     <div className="flex justify-center items-center h-screen bg-base-200">
-      <div className="card w-96 bg-base-100 shadow-lg">
-        <div className="card-body">
-          <AuthTabs />
+      <div className="card max-w-96 bg-white shadow-lg rounded-xl p-5">
+        <AuthTabs />
+        <form className="space-y-3">
           <FormInput
             name="name"
             type="text"
@@ -31,10 +31,10 @@ const Register = () => {
             placeholder="••••••••"
             label="Password"
           />
-          <div className="form-control mt-6">
+          <div className="pt-1">
             <button className="btn btn-primary w-[320px] h-9">Sign Up</button>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );
