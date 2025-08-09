@@ -53,7 +53,7 @@ function Product({ prod }) {
             ⭐{prod.rating} ({(Number(prod.stock) || 0) + 20} sold)
             {alreadyLiked ? (
               <button onClick={removeLiked} className="cursor-pointer text-xl">
-                <FaHeart />
+                <FaHeart color="blue" />
               </button>
             ) : (
               <button onClick={addLiked} className="cursor-pointer text-xl">

@@ -1,7 +1,6 @@
 import {
   About,
   Cart,
-  CartItem,
   Contact,
   Home,
   Login,
@@ -9,7 +8,7 @@ import {
   Register,
   Shop,
   SingleProduct,
-  Wishlist,
+  Favorites,
 } from "./pages";
 import {
   createBrowserRouter,
@@ -55,8 +54,8 @@ function App() {
           element: <Cart />,
         },
         {
-          path: "wishlist",
-          element: <Wishlist />,
+          path: "favorites",
+          element: <Favorites />,
         },
         {
           path: "shop",

@@ -60,8 +60,8 @@ function Footer() {
               </NavLink>
             </li>
             <li>
-              <NavLink to="/wishlist" className="hover:underline">
-                Wishlist
+              <NavLink to="/favorites" className="hover:underline">
+                Favorites
               </NavLink>
             </li>
           </ul>
