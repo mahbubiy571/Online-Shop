@@ -2,11 +2,14 @@ import AuthTabs from "../components/AuthTabs";
 import FormInput from "../components/FormInput";
 
 const Register = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
   return (
     <div className="flex justify-center items-center h-screen bg-base-200">
       <div className="card max-w-96 bg-white shadow-lg rounded-xl p-5">
         <AuthTabs />
-        <form className="space-y-3">
+        <form onSubmit={handleSubmit} className="space-y-3">
           <FormInput
             name="name"
             type="text"
