@@ -30,14 +30,29 @@ function Product({ prod }) {
 
   return (
     <Link to={`/singleProduct/${prod.id}`}>
-      <div className="shadow-lg grid w-60">
-        <figure>
+      <div className="shadow-lg flex flex-col w-60 items-center">
+        <div className="relative">
           <img
-            className="max-w-60 bg-cover ml-auto mr-auto"
+            className="w-55 h-55 object-contain mb-4"
             src={prod.thumbnail}
             alt={prod.title}
           />
-        </figure>
+          {alreadyLiked ? (
+            <button
+              onClick={removeLiked}
+              className="absolute top-4 -right-1 text-xl p-1.5"
+            >
+              <FaHeart color="blue" />
+            </button>
+          ) : (
+            <button
+              onClick={addLiked}
+              className="absolute top-4 -right-1 text-xl p-1.5"
+            >
+              <FaRegHeart />
+            </button>
+          )}
+        </div>
         <ul className="card-body shadow hover:shadow-2xl">
           <li className="card-title line-clamp-1">{prod.title}</li>
           <li className="line-clamp-2">{prod.description}</li>
@@ -51,15 +66,6 @@ function Product({ prod }) {
           </div>
           <h2 className="flex gap-2">
             ⭐{prod.rating} ({(Number(prod.stock) || 0) + 20} sold)
-            {alreadyLiked ? (
-              <button onClick={removeLiked} className="cursor-pointer text-xl">
-                <FaHeart color="blue" />
-              </button>
-            ) : (
-              <button onClick={addLiked} className="cursor-pointer text-xl">
-                <FaRegHeart />
-              </button>
-            )}
           </h2>
           <button
             onClick={(e) => handleCartSubmit(e, prod, products, dispatch)}
