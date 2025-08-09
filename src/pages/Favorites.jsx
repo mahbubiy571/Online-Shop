@@ -1,4 +1,4 @@
-import { FaHeart } from "react-icons/fa";
+import { FaHeart, FaHeartBroken } from "react-icons/fa";
 import { formatPrice } from "../utils";
 import { handleCartSubmit } from "../utils/handleCartSubmit";
 import { Link } from "react-router-dom";
@@ -14,8 +14,12 @@ function Favorites() {
 
   if (likedProducts.length === 0) {
     return (
-      <h2 className="text-center text-xl mt-10">
-        💙 Saralangan mahsulotlar yo‘q
+      <h2 className="flex flex-col items-center justify-center text-center text-xl mt-20 text-gray-500">
+        <FaHeartBroken className="text-5xl text-blue-500 mb-3 animate-bounce" />
+        <p className="flex items-center gap-2 text-2xl">
+          <FaHeart color="blue" /> Saralangan mahsulotlar yo‘q
+        </p>
+        <p className="text-[14px] mt-3">iltimos, mahsulot qo'shing</p>
       </h2>
     );
   }
