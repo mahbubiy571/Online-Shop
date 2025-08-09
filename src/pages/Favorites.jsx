@@ -14,12 +14,13 @@ function Favorites() {
 
   if (likedProducts.length === 0) {
     return (
-      <h2 className="flex flex-col items-center justify-center text-center text-xl mt-20 text-gray-500">
-        <FaHeartBroken className="text-5xl text-blue-500 mb-3 animate-bounce" />
-        <p className="flex items-center gap-2 text-2xl">
-          <FaHeart color="blue" /> Saralangan mahsulotlar yo‘q
+      <h2 className="flex flex-col items-center justify-center text-center mt-15 sm:mt-25 text-gray-500">
+        <FaHeartBroken className="text-4xl sm:text-5xl text-blue-500 mb-3 animate-bounce" />
+        <p className="flex items-center gap-2 text-lg sm:text-2xl">
+          <FaHeart className="text-blue-500 text-xl sm:text-2xl" /> Saralangan
+          mahsulotlar yo‘q
         </p>
-        <p className="text-[14px] mt-3">iltimos, mahsulot qo'shing</p>
+        <p className="text-xs sm:text-sm mt-3">Iltimos, mahsulot qo'shing</p>
       </h2>
     );
   }
