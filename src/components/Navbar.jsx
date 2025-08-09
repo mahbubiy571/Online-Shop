@@ -7,7 +7,7 @@ import { useTheme } from "../hooks/useTheme";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const { totalAmount, totalPrice } = useContext(GlobalContext);
+  const { totalAmount } = useContext(GlobalContext);
   const { changeTheme, theme } = useTheme();
 
   return (

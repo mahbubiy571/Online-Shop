@@ -8,6 +8,7 @@ const globalStateFromLocal = () => {
     ? JSON.parse(localStorage.getItem("globalState"))
     : {
         user: true,
+        likedProducts: [],
         products: [],
         totalAmount: 0,
         totalPrice: 0,
@@ -19,13 +20,13 @@ const changeState = (state, action) => {
 
   switch (type) {
     case "ADD_PRODUCT":
-      toast.success("🛒 Mahsulot savatchaga qo‘shildi");
+      setTimeout(() => toast.success("🛒 Mahsulot savatchaga qo‘shildi"), 0);
       return {
         ...state,
         products: [...state.products, { ...payload, amount: 1 }],
       };
     case "INCREASE_AMOUNT":
-      toast.success("✅ Mahsulot miqdori oshirildi");
+      setTimeout(() => toast.success("✅ Mahsulot miqdori oshirildi"), 0);
       return {
         ...state,
         products: state.products.map((product) =>
@@ -35,12 +36,12 @@ const changeState = (state, action) => {
         ),
       };
     case "DECREASE_AMOUNT":
-      toast.warning("⚠️ Mahsulot miqdori kamaytirildi");
+      setTimeout(() => toast.warning("⚠️ Mahsulot miqdori kamaytirildi"), 0);
       return {
         ...state,
         products: state.products.map((product) =>
           product.id === payload
-            ? { ...product, amount: product.amount - 1 }
+            ? { ...product, amount: Math.max(product.amount - 1, 1) }
             : product
         ),
       };
@@ -52,24 +53,38 @@ const changeState = (state, action) => {
       };
     case "DELETE_ITEM":
       if (!confirm("Rostan ham ushbu mahsulotni o'chirmoqchimisiz?")) {
-        toast.warning("❌ Mahsulot o‘chirish bekor qilindi");
+        setTimeout(
+          () => toast.warning("❌ Mahsulot o‘chirish bekor qilindi"),
+          0
+        );
         return state;
       }
-
-      toast.error("🗑️ Mahsulot o‘chirildi");
-
+      setTimeout(() => toast.error("🗑️ Mahsulot o‘chirildi"), 0);
       return {
         ...state,
         products: state.products.filter((p) => p.id !== payload),
       };
     case "CLEAR":
-      if (!confirm("Rostdan ham savatchani tozalamoqchimisiz?")) return state;
-      toast.info("🧹 Savatcha tozalandi");
+      if (!confirm("Rostdan ham savatchani tozalamoqchimisiz?")) {
+        setTimeout(() => toast.warning("😉 Mahsulotlar joyida"), 0);
+        return state;
+      }
+      setTimeout(() => toast.info("🧹 Savatcha tozalandi"), 0);
       return {
         ...state,
         products: [],
         totalAmount: 0,
         totalPrice: 0,
+      };
+    case "ADD_LIKED":
+      return {
+        ...state,
+        likedProducts: [...state.likedProducts, payload],
+      };
+    case "REMOVE_LIKED":
+      return {
+        ...state,
+        likedProducts: state.likedProducts.filter((p) => p.id !== payload),
       };
     default:
       return state;
@@ -84,8 +99,8 @@ export function GlobalContextProvider({ children }) {
     let amount = 0;
 
     state.products.forEach((product) => {
-      price += product.amount * product.price;
-      amount += product.amount;
+      price += (Number(product.amount) || 0) * (Number(product.price) || 0);
+      amount += Number(product.amount) || 0;
     });
 
     dispatch({ type: "CHANGE_AMOUNT_PRICE", payload: { price, amount } });
