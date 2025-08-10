@@ -2,6 +2,8 @@ import FormInput from "../components/FormInput";
 import AuthTabs from "../components/AuthTabs";
 import { useNavigate } from "react-router-dom";
 import { useGlobalContext } from "../hooks/useGlobalContext";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -14,7 +16,10 @@ const Login = () => {
     const password = formData.get("password");
 
     if (!email || !password) {
-      alert("Iltimos, barcha maydonlarni to‘ldiring!");
+      setTimeout(
+        () => toast.warning("⚠️ Iltimos, barcha maydonlarni to‘ldiring!"),
+        0
+      );
       return;
     }
 
@@ -23,12 +28,13 @@ const Login = () => {
 
     if (user) {
       dispatch({ type: "LOGIN", payload: user });
-      alert("Kirish muvaffaqiyatli!");
+      setTimeout(() => toast.success("✅ Kirish muvaffaqiyatli!"), 0);
       navigate("/");
     } else {
-      alert("Email yoki parol noto'g'ri!");
+      setTimeout(() => toast.error("❌ Email yoki parol noto'g'ri!"), 0);
     }
   };
+
   return (
     <div className="flex justify-center items-center min-h-screen">
       <div className="card max-w-72 sm:max-w-96 shadow-lg dark:shadow-2xl dark:border dark:border-blue-700 rounded-xl p-5">

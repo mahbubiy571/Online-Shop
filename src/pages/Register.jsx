@@ -1,6 +1,8 @@
 import AuthTabs from "../components/AuthTabs";
 import FormInput from "../components/FormInput";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -14,23 +16,29 @@ const Register = () => {
     const password = formData.get("password");
 
     if (!name || !email || !phone || !password) {
-      alert("Iltimos, barcha maydonlarni to‘ldiring!");
+      setTimeout(
+        () => toast.warning("⚠️ Iltimos, barcha maydonlarni to‘ldiring!"),
+        0
+      );
       return;
     }
 
     let users = JSON.parse(localStorage.getItem("users")) || [];
 
     if (users.find((u) => u.email === email)) {
-      alert("Bu email allaqachon ro'yxatdan o'tgan!");
+      setTimeout(
+        () => toast.error("❌ Bu email allaqachon ro'yxatdan o'tgan!"),
+        0
+      );
       return;
     }
 
     users.push({ name, email, phone, password });
     localStorage.setItem("users", JSON.stringify(users));
-
-    alert("Ro'yxatdan o'tish muvaffaqiyatli!");
+    setTimeout(() => toast.success("✅ Ro'yxatdan o'tish muvaffaqiyatli!"), 0);
     navigate("/login");
   };
+
   return (
     <div className="flex justify-center items-center min-h-screen">
       <div className="card max-w-72 sm:max-w-96 shadow-lg dark:shadow-2xl dark:border dark:border-blue-700 rounded-xl p-5">
