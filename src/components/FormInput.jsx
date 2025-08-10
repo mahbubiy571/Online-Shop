@@ -8,7 +8,7 @@ function FormInput({ type, name, label, placeholder }) {
         name={name}
         type={type}
         placeholder={placeholder}
-        className="input input-bordered h-9 text-sm focus:outline-none focus:border-blue-500 focus:shadow-lg focus:shadow-blue-400/50"
+        className="input input-bordered w-full h-9 text-sm focus:outline-none focus:border-blue-500 focus:shadow-lg focus:shadow-blue-400/50"
       />
     </div>
   );

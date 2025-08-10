@@ -6,7 +6,7 @@ const Login = () => {
     e.preventDefault();
   };
   return (
-    <div className="flex justify-center items-center h-screen bg-base-200">
+    <div className="flex justify-center items-center min-h-screen bg-base-200">
       <div className="card max-w-96 bg-white shadow-lg rounded-xl p-5">
         <AuthTabs />
         <form onSubmit={handleSubmit} className="space-y-3">

@@ -1,5 +1,3 @@
-import { useGlobalContext } from "../hooks/useGlobalContext";
-
 function About() {
   return (
     <div>
