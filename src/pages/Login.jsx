@@ -7,7 +7,7 @@ const Login = () => {
   };
   return (
     <div className="flex justify-center items-center min-h-screen bg-base-200">
-      <div className="card max-w-96 bg-white shadow-lg rounded-xl p-5">
+      <div className="card max-w-72 sm:max-w-96 bg-white shadow-lg rounded-xl p-5">
         <AuthTabs />
         <form onSubmit={handleSubmit} className="space-y-3">
           <FormInput
@@ -23,7 +23,7 @@ const Login = () => {
             label="Password"
           />
           <div className="pt-1">
-            <button className="btn btn-primary w-[320px] h-9 text-[16px] rounded-md">
+            <button className="btn btn-primary w-full h-9 text-[16px] rounded-md">
               Sign In
             </button>
           </div>

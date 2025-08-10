@@ -6,8 +6,8 @@ const Register = () => {
     e.preventDefault();
   };
   return (
-    <div className="flex justify-center items-center h-screen bg-base-200">
-      <div className="card max-w-96 bg-white shadow-lg rounded-xl p-5">
+    <div className="flex justify-center items-center min-h-screen bg-base-200">
+      <div className="card max-w-75 sm:max-w-96 bg-white shadow-lg rounded-xl p-5">
         <AuthTabs />
         <form onSubmit={handleSubmit} className="space-y-3">
           <FormInput
@@ -35,7 +35,9 @@ const Register = () => {
             label="Password"
           />
           <div className="pt-1">
-            <button className="btn btn-primary w-[320px] h-9">Sign Up</button>
+            <button className="btn btn-primary w-full text-[16px] h-9 rounded-md">
+              Sign Up
+            </button>
           </div>
         </form>
       </div>
