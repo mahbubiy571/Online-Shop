@@ -1,13 +1,37 @@
 import FormInput from "../components/FormInput";
 import AuthTabs from "../components/AuthTabs";
+import { useNavigate } from "react-router-dom";
+import { useGlobalContext } from "../hooks/useGlobalContext";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const { dispatch } = useGlobalContext();
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    const formData = new FormData(e.target);
+    const email = formData.get("email");
+    const password = formData.get("password");
+
+    if (!email || !password) {
+      alert("Iltimos, barcha maydonlarni to‘ldiring!");
+      return;
+    }
+
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+    let user = users.find((u) => u.email === email && u.password === password);
+
+    if (user) {
+      dispatch({ type: "LOGIN", payload: user });
+      alert("Kirish muvaffaqiyatli!");
+      navigate("/");
+    } else {
+      alert("Email yoki parol noto'g'ri!");
+    }
   };
   return (
-    <div className="flex justify-center items-center min-h-screen bg-base-200">
-      <div className="card max-w-72 sm:max-w-96 bg-white shadow-lg rounded-xl p-5">
+    <div className="flex justify-center items-center min-h-screen">
+      <div className="card max-w-72 sm:max-w-96 shadow-lg dark:shadow-2xl dark:border dark:border-blue-700 rounded-xl p-5">
         <AuthTabs />
         <form onSubmit={handleSubmit} className="space-y-3">
           <FormInput

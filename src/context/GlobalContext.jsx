@@ -7,7 +7,7 @@ const globalStateFromLocal = () => {
   return localStorage.getItem("globalState")
     ? JSON.parse(localStorage.getItem("globalState"))
     : {
-        user: false,
+        user: null,
         likedProducts: [],
         products: [],
         totalAmount: 0,
@@ -19,6 +19,16 @@ const changeState = (state, action) => {
   const { payload, type } = action;
 
   switch (type) {
+    case "LOGIN":
+      return {
+        ...state,
+        user: payload,
+      };
+    case "LOGOUT":
+      return {
+        ...state,
+        user: false,
+      };
     case "ADD_PRODUCT":
       setTimeout(() => toast.success("🛒 Mahsulot savatchaga qo‘shildi"), 0);
       return {

@@ -63,7 +63,7 @@ function Navbar() {
               onClick={() => setIsMenuOpen(false)}
             >
               <User className="w-7 h-7" />
-              Login
+              Profile
             </NavLink>
             <NavLink
               className="flex items-center gap-1.5  hover:text-amber-600 transition-normal"

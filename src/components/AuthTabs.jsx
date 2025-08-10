@@ -17,13 +17,13 @@ const AuthTabs = () => {
           Online<span className="text-accent">Shop</span>
         </span>
       </NavLink>
-      <div className="flex  md:w-[320px] h-9 bg-blue-50 rounded-md overflow-hidden py-1 px-1">
+      <div className="flex  md:w-[320px] h-9 light:bg-blue-50 dark:border-blue-400 dark:border rounded-sm overflow-hidden light:py-1 light:px-1">
         <Link
           to="/login"
           className={`w-1/2 flex items-center justify-center text-[15px] font-medium rounded-b-md transition-all duration-200 ${
             isActive("/login")
-              ? "bg-white text-blue-600 shadow-sm"
-              : "text-gray-500 hover:text-gray-700"
+              ? "light:bg-white light:text-blue-600 shadow-sm dark:bg-blue-400 dark:rounded-sm dark:text-blue-50"
+              : "text-blue-400"
           }`}
         >
           Sign In
@@ -32,8 +32,8 @@ const AuthTabs = () => {
           to="/register"
           className={`w-1/2 flex items-center justify-center text-[15px] font-medium rounded-[6px] transition-all duration-200 ${
             isActive("/register")
-              ? "bg-white text-blue-600 shadow-sm"
-              : "text-gray-500 hover:text-gray-700"
+              ? "light:bg-white light:text-blue-600 shadow-sm dark:bg-blue-400 dark:rounded-sm dark:text-blue-50"
+              : "text-blue-400"
           }`}
         >
           Sign Up
