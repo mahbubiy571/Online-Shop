@@ -7,12 +7,10 @@ function Profile() {
     dispatch({ type: "LOGOUT" });
   };
 
-  if (!user) {
+  if (!!user) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <p className="text-gray-600 dark:text-gray-300 text-lg">
-          Iltimos, tizimga kiring.
-        </p>
+        <p className="text-lg">Iltimos, tizimga kiring.</p>
       </div>
     );
   }
