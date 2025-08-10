@@ -7,7 +7,7 @@ function Profile() {
     dispatch({ type: "LOGOUT" });
   };
 
-  if (!!user) {
+  if (!user) {
     return (
       <div className="flex justify-center items-center h-screen">
         <p className="text-lg">Iltimos, tizimga kiring.</p>
