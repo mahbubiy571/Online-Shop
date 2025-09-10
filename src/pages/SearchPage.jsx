@@ -10,7 +10,7 @@ function SearchPage({ products }) {
   );
 
   return (
-    <section className="p-6">
+    <section className="p-3">
       <div className="relative w-full max-w-md mx-auto lg:mr-20 lg:ml-auto mb-6">
         <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-lg" />
         <input
