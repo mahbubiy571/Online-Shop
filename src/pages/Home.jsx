@@ -1,5 +1,5 @@
-import ProductList from "../components/ProductList";
 import { useFetch } from "../hooks/useFetch";
+import SearchPage from "../pages/SearchPage";
 
 function Home() {
   const {
@@ -34,11 +34,9 @@ function Home() {
     );
   }
 
-  return (
-    <section>
-      {products && <ProductList products={products.products} />}
-    </section>
-  );
+  const safeProducts = products?.products || [];
+
+  return <SearchPage products={safeProducts} />;
 }
 
 export default Home;
