@@ -50,7 +50,7 @@ function Footer() {
           <h3 className="font-semibold text-lg mb-2">Shop</h3>
           <ul className="space-y-1">
             <li>
-              <NavLink to="/shop" className="hover:underline">
+              <NavLink to="/allproducts" className="hover:underline">
                 All Products
               </NavLink>
             </li>

@@ -6,7 +6,7 @@ import {
   Login,
   Profile,
   Register,
-  Shop,
+  AllProducts,
   SingleProduct,
   Favorites,
 } from "./pages";
@@ -39,31 +39,31 @@ function App() {
           element: <Home />,
         },
         {
-          path: "about",
+          path: "/about",
           element: <About />,
         },
         {
-          path: "contact",
+          path: "/contact",
           element: <Contact />,
         },
         {
-          path: "profile",
+          path: "/profile",
           element: <Profile />,
         },
         {
-          path: "cart",
+          path: "/cart",
           element: <Cart />,
         },
         {
-          path: "favorites",
+          path: "/favorites",
           element: <Favorites />,
         },
         {
-          path: "shop",
-          element: <Shop />,
+          path: "/allproducts",
+          element: <AllProducts />,
         },
         {
-          path: "singleProduct/:id",
+          path: "/singleProduct/:id",
           element: <SingleProduct />,
         },
       ],
